@@ -8,4 +8,10 @@ node 'localhost' {
 		ensure => present,
 		managehome => true;
 	}	
+	class { 'postgresql::server': }
+
+	postgresql::server::db { 'drishti':
+	  user     => 'postgres',
+	  password => postgresql_password('postgres', 'password'),
+	}
 }
