@@ -1,0 +1,44 @@
+{
+  "name": "maestrodev-activemq",
+  "version": "1.2.2",
+  "source": "http://github.com/maestrodev/puppet-activemq.git",
+  "author": "maestrodev",
+  "license": "Apache License, Version 2.0",
+  "summary": "Install and manage Apache ActiveMQ",
+  "description": "Install Apache ActiveMQ and manage the service",
+  "project_page": "http://github.com/maestrodev/puppet-activemq",
+  "dependencies": [
+    {
+      "name": "maestrodev/wget",
+      "version_requirement": ">=1.0.0"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "Gemfile": "d25562149172fefc913e31e11cfc03bb",
+    "Gemfile.lock": "0896f734accca9139dd3f297b166d41f",
+    "Modulefile": "1a15dfaa209c05e796a2ebe7eb6d18be",
+    "Puppetfile": "ffbfa1dee66bf4bf8db958d36bc710c5",
+    "Puppetfile.lock": "844ffe651a08cd1bf4b352ec9d574e29",
+    "README.md": "d70b12c6c3f939793862c9b2a4faa7e9",
+    "Rakefile": "019215bbe61452f25a0e3760630f238f",
+    "Vagrantfile": "812dff27ae21dba8142eabd39b147207",
+    "manifests/init.pp": "570ab306e9db8d97d7ff1521ed32e361",
+    "manifests/stomp.pp": "57647fcf1fc6f8d85e38c762b17d2338",
+    "spec/classes/activemq_spec.rb": "f0e16cd32eec87f8a84260784c35f26b",
+    "spec/fixtures/modules/wget/Gemfile": "4867df718b033e152c59c2a418e88b92",
+    "spec/fixtures/modules/wget/Gemfile.lock": "b3e4cf700f055d8d242ad877da298127",
+    "spec/fixtures/modules/wget/Modulefile": "70e746ab8cc65a8f2c688bb089ec9ed6",
+    "spec/fixtures/modules/wget/README": "65195eff06b0e0bc87f129bcc146504e",
+    "spec/fixtures/modules/wget/Rakefile": "527f8893f2694a9bc92993074f011cc3",
+    "spec/fixtures/modules/wget/manifests/init.pp": "bdfb401534106cb5f46b8f4c5141424b",
+    "spec/fixtures/modules/wget/spec/classes/init_spec.rb": "3c0f53998a2fedbde704fb99180d413b",
+    "spec/fixtures/modules/wget/spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+    "spec/manifests/site.pp": "41c5b3bb18ed7e70b5aa2dc6c1a97724",
+    "spec/spec_helper.rb": "b60d9735dc7ca1d27e84c5c63d2fe412",
+    "templates/activemq-init.d.erb": "bd410fc5ff0207ddd790a5f413db60bc",
+    "templates/wrapper.conf.erb": "196f0d5ddde05fbd151d3fefb3add89c"
+  }
+}

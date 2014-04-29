@@ -1,5 +1,7 @@
 include apache
-include java
+include wget
+include jdk_oracle
+include activemq
 
 node 'localhost' {
 	user { 'motech':
