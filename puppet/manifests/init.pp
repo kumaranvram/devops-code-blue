@@ -2,6 +2,7 @@ include apache
 include wget
 include jdk_oracle
 include activemq
+include rpmrepos::epel
 
 node 'localhost' {
 	user { 'motech':
@@ -14,4 +15,6 @@ node 'localhost' {
 	  user     => 'postgres',
 	  password => postgresql_password('postgres', 'password'),
 	}
+	
+	class { 'couchdb': }
 }

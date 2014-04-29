@@ -1,0 +1,31 @@
+{
+  "license": "Apache License, Version 2.0",
+  "author": "@jonbrouse",
+  "checksums": {
+    "tests/init.pp": "7ec15df68f556dd7b1a7ccf4ac2ff217",
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "templates/local.ini.erb": "559e62b61481f7885497d5dd913f9934",
+    "manifests/params.pp": "4d447385aa1f942cbd1df9a1912651ad",
+    "manifests/package.pp": "89bc424ba7cd8371d3adeb7b8c4bcb80",
+    "README.md": "40a70deada166d6c7e9f97b41405abd9",
+    "manifests/service.pp": "7dc0d0a69cd6ece6ce023e494b0bc21a",
+    "manifests/init.pp": "bd084251794ecd94b26aeebb9a6fa714",
+    "Modulefile": "ff3845026c74a583fc4f8d5f1afdefe1",
+    "manifests/config.pp": "be72e944bab5aeac438f37ea6aaf2776"
+  },
+  "summary": "Installs and manages couchdb",
+  "description": "This module installs couchdb and populates local.ini.erb with the defaults set in couchdb::params",
+  "dependencies": [
+    {
+      "version_requirement": ">=0.0.1",
+      "name": "metcalfc/rpmrepos"
+    }
+  ],
+  "version": "0.1.3",
+  "project_page": "https://github.com/jonbrouse/puppet-couchdb",
+  "types": [
+
+  ],
+  "name": "jonbrouse-couchdb",
+  "source": "UNKNOWN"
+}
