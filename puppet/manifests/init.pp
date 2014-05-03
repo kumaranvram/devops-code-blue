@@ -17,4 +17,6 @@ node 'localhost' {
 	}
 	
 	class { 'couchdb': }
+	class {'dristi': }
+	
 }
