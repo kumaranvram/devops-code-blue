@@ -5,10 +5,9 @@ include activemq
 include rpmrepos::epel
 
 node 'localhost' {
-	user { 'motech':
-		ensure => present,
-		managehome => true;
-	}	
+
+  class {'dristi': }
+  
 	class { 'postgresql::server': }
 
 	postgresql::server::db { 'drishti':
@@ -17,6 +16,5 @@ node 'localhost' {
 	}
 	
 	class { 'couchdb': }
-	class {'dristi': }
 	
 }
