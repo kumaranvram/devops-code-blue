@@ -16,7 +16,7 @@
 class couchdb::config inherits couchdb::params {
   File {
     owner => 'couchdb',
-    group => 'root',
+    group => 'couchdb',
     mode  => '0644',
   }
   file { "${couchdb::params::couchdb_conf_dir}":
