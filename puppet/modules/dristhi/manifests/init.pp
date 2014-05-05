@@ -1,4 +1,4 @@
-class dristi($user = 'motech') {
+class dristhi($user = 'motech') {
   user { "${user}":
     ensure => present,
     managehome => true;

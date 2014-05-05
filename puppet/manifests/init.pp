@@ -6,7 +6,7 @@ include rpmrepos::epel
 
 node 'localhost' {
 
-  class {'dristi': }
+  class {'dristhi': }
   
 	class { 'postgresql::server': }
 
