@@ -22,6 +22,7 @@ vagrant ssh
 
 Collaborators:
 
-[Kumaran](https://github.com/kumaranvram)
+[Ashwin](https://github.com/ashwinkonale)
 [Bharti Nagpal](https://github.com/bhartin)
 [Devi Sridharan](https://github.com/devishree90)
+[Kumaran](https://github.com/kumaranvram)
