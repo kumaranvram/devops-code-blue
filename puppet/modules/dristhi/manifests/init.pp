@@ -8,13 +8,17 @@ class dristhi($user = 'motech') {
 	  ensure => present,
 	}  
 
-#todo: use ssh.
 	vcsrepo { "/home/${user}/SEL-Columbia":
 	  ensure   => present,
 	  provider => git,
 	  source   => 'https://github.com/SEL-Columbia/dristhi.git',
 	  owner  => "${user}",
-    require => [Package['git'], User['motech']],
+    require => [Package['git'], User["${user}"]],
+  }
+  
+  class {"dristhi::tomcat":
+    user => "${user}",
+    require => User["${user}"],
   }
 
 }
