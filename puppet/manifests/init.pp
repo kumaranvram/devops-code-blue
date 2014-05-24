@@ -4,11 +4,10 @@ include jdk_oracle
 include activemq
 include rpmrepos::epel
 
-
 node 'localhost' {
 
   class {'dristhi': }
-  
+    
 	class { 'postgresql::server': }
 
 	postgresql::server::db { 'drishti':
