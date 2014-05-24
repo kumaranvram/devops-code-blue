@@ -20,5 +20,10 @@ class dristhi($user = 'motech') {
     user => "${user}",
     require => User["${user}"],
   }
+  
+  class{"dristhi::ant":
+    user => "${user}",
+    require => User["${user}"],
+  }
 
 }
