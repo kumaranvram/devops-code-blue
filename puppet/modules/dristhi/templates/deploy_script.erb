@@ -1,0 +1,11 @@
+#!/bin/bash
+VERSION=$(curl -s 'http://ci.motechproject.org/job/Drishti%20Delivery/lastBuild/consoleText' | grep -a 'Uploaded: .*drishti-delivery-0.1-[0-9]\{8\}\.[0-9]\{6\}-[0-9]*.jar' | sed -e 's/Uploaded: .*drishti-delivery-0.1-\([0-9]\{8\}\.[0-9]\{6\}-[0-9]*\).jar.*/\1/')
+
+echo "Deploying version from nexus: $VERSION"
+export time=`date +%F_%T`; \
+mkdir -p old/backup.${time} && \
+([[ `ls | grep -q "drishti-delivery.*"; echo $?` = 0 ]] && /bin/mv -f drishti-delivery* old/backup.${time} || true) && \
+wget http://nexus.motechproject.org/content/repositories/drishti/org/ei/drishti/drishti-delivery/0.1-SNAPSHOT/drishti-delivery-0.1-'${VERSION}'.jar && \
+unzip -d drishti-delivery drishti-delivery-0.1-'${VERSION}'.jar && \
+cd drishti-delivery && \
+ant -lib . -Denv=dev deploy.drishti.from.nex

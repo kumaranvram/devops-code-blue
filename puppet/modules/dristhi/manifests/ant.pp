@@ -5,6 +5,7 @@ class dristhi::ant($user){
   file{"/home/${user}/ant":
     ensure => directory,
     owner  => $user,
+    group => $user, 
   }
   #Download, extract, configure and compile tomcat with just download url.
   puppi::netinstall{"ant":
