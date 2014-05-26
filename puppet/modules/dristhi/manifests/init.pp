@@ -36,7 +36,7 @@ class dristhi($user = 'motech') {
     password => postgresql_password('postgres', 'password'),
   }
   
-  class { 'couchdb': }
+  class { 'couchdb':}
   
   file{'deploy_script.sh':
     ensure  => file,

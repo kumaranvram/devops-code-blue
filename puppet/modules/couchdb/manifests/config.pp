@@ -21,6 +21,8 @@ class couchdb::config inherits couchdb::params {
   }
   file { "${couchdb::params::couchdb_conf_dir}":
     ensure => directory,
+    owner => 'couchdb',
+    group => 'couchdb',
   }
   file { "${couchdb::params::couchdb_conf_dir}/local.ini":
     ensure  => file,
