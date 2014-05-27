@@ -19,9 +19,14 @@ class dristhi($user = 'motech') {
     require => [Package['git'], User["${user}"]],
   }
   
+  file {'java_home':
+     path => '/etc/profile.d/java.sh',
+     content => "export JAVA_HOME=/opt/jdk1.7.0",
+  }  
+
   class {"dristhi::tomcat":
     user => "${user}",
-    require => User["${user}"],
+    require => [User["${user}"], File['java_home']],
   }
   
   class{"dristhi::ant":

@@ -8,4 +8,4 @@ mkdir -p old/backup.${time} && \
 wget http://nexus.motechproject.org/content/repositories/drishti/org/ei/drishti/drishti-delivery/0.1-SNAPSHOT/drishti-delivery-0.1-'${VERSION}'.jar && \
 unzip -d drishti-delivery drishti-delivery-0.1-'${VERSION}'.jar && \
 cd drishti-delivery && \
-ant -lib . -Denv=dev deploy.drishti.from.nex
+ant -lib . -Denv=dev deploy.drishti.from.nexus.and.reset.db

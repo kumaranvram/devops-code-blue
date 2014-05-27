@@ -7,7 +7,7 @@ class dristhi::tomcat($user){
   file{"/home/$user/tomcat7":
     ensure => directory,
     owner => $user
-  }
+  }->
   #Download, extract, configure and compile tomcat with just download url.
   puppi::netinstall{"tomcat7":
      path            => '/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin',
@@ -15,7 +15,7 @@ class dristhi::tomcat($user){
       destination_dir => "/home/${user}/tomcat7",
       owner           => $user,
       require         => File["/home/${user}/tomcat7"],
-  }
+  }->
   file { "/etc/init.d/tomcat":
     ensure  => present,
     content => template("dristhi/etc/init.d/tomcat.erb"),
@@ -25,7 +25,7 @@ class dristhi::tomcat($user){
 	file { 'catalina_home':
 	   path => '/etc/profile.d/catalina.sh',
 	   content => "export CATALINA_HOME=/home/${user}/tomcat7/${filename}",
-  }  
+  }->  
   service { "tomcat":
     ensure => running,
     enable => true,
