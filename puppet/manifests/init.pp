@@ -1,6 +1,6 @@
 
 node 'localhost' {
-
-  class {'dristhi': }
+  $user ='motech'
+  class {'dristhi': user => $user}
 		
 }
