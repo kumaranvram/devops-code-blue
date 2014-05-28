@@ -21,11 +21,16 @@ class dristhi::tomcat($user){
     content => template("dristhi/etc/init.d/tomcat.erb"),
     owner   => $user,
     mode    => '755',
+    notify  => Service['tomcat'],
   } ->
 	file { 'catalina_home':
 	   path => '/etc/profile.d/catalina.sh',
 	   content => "export CATALINA_HOME=/home/${user}/tomcat7/${filename}",
-  }->  
+  }-> 
+  file { 'tomcat_home':
+     path => '/etc/profile.d/tomcat.sh',
+     content => "export TOMCAT_HOME=/home/${user}/tomcat7/${filename}",
+  } -> 
   service { "tomcat":
     ensure => running,
     enable => true,
