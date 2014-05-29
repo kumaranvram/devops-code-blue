@@ -1,85 +1,96 @@
 class dristhi::deployment ($user) {
-  file { 'deploy_script.sh':
+
+  $env_name = "vagrantvm"
+
+  file { "deploy_script.sh":
     ensure  => file,
     path    => "/home/${user}/deploy_script.sh",
-    content => template('dristhi/deploy_script.erb'),
-    mode    => '755',
+    content => template("dristhi/deploy_script.erb"),
+    mode    => "755",
     owner   => $user,
     group   => $user,
   } 
-  exec { 'install_dristhi':
-    path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+  file {"ant_script.sh":
+    ensure   => file,
+    path    => "/home/${user}/ant_script.sh",
+    content => template("dristhi/ant_script.erb"),
+    mode    => "755",
+    owner   => $user,
+    group   => $user, 
+  }
+  exec { "install_dristhi":
+    path    => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
     cwd     => "/home/${user}",
     command => "/bin/sh ./deploy_script.sh",
     user    => "${user}",
-    require => File['deploy_script.sh'],
+    require => File["deploy_script.sh"],
   } 
-  file { 'vagrantvm':
+  file { "${env_name}":
     ensure => directory,
-    path   => "/home/${user}/drishti-delivery/properties/vagrantvm",
-    require => Exec['install_dristhi'],
+    path   => "/home/${user}/drishti-delivery/properties/${env_name}",
+    require => Exec["install_dristhi"],
   }
 
-  file { 'activemq.properties':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/activemq.properties",
+  file { "activemq.properties":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/activemq.properties",
     ensure  => present,
-    content => template('dristhi/vagrantvm/activemq.properties'),
-    require => File['vagrantvm'],
+    content => template("dristhi/${env_name}/activemq.properties"),
+    require => File["${env_name}"],
   }
 
-  file { 'couchdb.properties':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/couchdb.properties",
+  file { "couchdb.properties":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/couchdb.properties",
     ensure  => present,
-    content => template('dristhi/vagrantvm/couchdb.properties'),
-    require => File['vagrantvm'],
+    content => template("dristhi/${env_name}/couchdb.properties"),
+    require => File["${env_name}"],
   }
 
-  file { 'deploy.properties':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/deploy.properties",
+  file { "deploy.properties":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/deploy.properties",
     ensure  => present,
-    content => template('dristhi/vagrantvm/deploy.properties'),
-    require => File['vagrantvm'],
+    content => template("dristhi/${env_name}/deploy.properties"),
+    require => File["${env_name}"],
   }
 
-  file { 'drishti.properties':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/drishti.properties",
+  file { "drishti.properties":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/drishti.properties",
     ensure  => present,
-    content => template('dristhi/vagrantvm/drishti.properties'),
-    require => File['vagrantvm'],
+    content => template("dristhi/${env_name}/drishti.properties"),
+    require => File["${env_name}"],
   }
 
-  file { 'osgi.properties':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/osgi.properties",
+  file { "osgi.properties":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/osgi.properties",
     ensure  => present,
-    content => template('dristhi/vagrantvm/osgi.properties'),
-    require => File['vagrantvm'],
+    content => template("dristhi/${env_name}/osgi.properties"),
+    require => File["${env_name}"],
   }
 
-  file { 'quartz.properties':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/quartz.properties",
+  file { "quartz.properties":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/quartz.properties",
     ensure  => present,
-    content => template('dristhi/vagrantvm/quartz.properties'),
-    require => File['vagrantvm'],
+    content => template("dristhi/${env_name}/quartz.properties"),
+    require => File["${env_name}"],
   }
 
-  file { 'log4j.xml':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/log4j.xml",
+  file { "log4j.xml":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/log4j.xml",
     ensure  => present,
-    content => template('dristhi/vagrantvm/log4j.xml'),
-    require => File['vagrantvm'],
+    content => template("dristhi/${env_name}/log4j.xml"),
+    require => File["${env_name}"],
   }
 
-  file { 'reporting_folder':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/reporting",
+  file { "reporting_folder":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/reporting",
     ensure  => directory,
-    require => File['vagrantvm'],
+    require => File["${env_name}"],
   }
 
-  file { 'reporting-log4j.xml':
-    path    => "/home/${user}/drishti-delivery/properties/vagrantvm/reporting/log4j.xml",
+  file { "reporting-log4j.xml":
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}/reporting/log4j.xml",
     ensure  => present,
-    content => template('dristhi/vagrantvm/log4j.xml'),
-    require => File['reporting_folder'],
+    content => template("dristhi/${env_name}/log4j.xml"),
+    require => File["reporting_folder"],
   }
 
 }

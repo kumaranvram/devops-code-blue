@@ -4,17 +4,17 @@ include rpmrepos::epel
 
 class dristhi($user) {
   
-#  group { "${user}": ensure => "present",
-#    
-#  }
-#  
-#  user { "${user}":
-#    ensure => present,
-#    gid => $user,
-#    managehome => true,
-#    require  => Group["${user}"],
-#    shell      => "/bin/bash",
-#  } 
+  group { "${user}": 
+    ensure => "present",  
+  }
+  
+  user { "${user}":
+    ensure => present,
+    gid => $user,
+    managehome => true,
+    require  => Group["${user}"],
+    shell      => "/bin/bash",
+  } 
 
 #	class{'sudo':} ->
 #	  sudo::conf { "${user}":
@@ -49,7 +49,9 @@ class dristhi($user) {
     user => "${user}",
   }
   
-  class { 'postgresql::server': }
+  class {"dristhi::postgresql": 
+    user  => $user,
+  }
 
   class { 'couchdb':  }
   
