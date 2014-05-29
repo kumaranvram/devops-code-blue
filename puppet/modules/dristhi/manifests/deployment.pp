@@ -1,5 +1,4 @@
 class dristhi::deployment ($user) {
-
   $env_name = "vagrantvm"
 
   file { "deploy_script.sh":
@@ -9,25 +8,28 @@ class dristhi::deployment ($user) {
     mode    => "755",
     owner   => $user,
     group   => $user,
-  } 
-  file {"ant_script.sh":
-    ensure   => file,
+  }
+
+  file { "ant_script.sh":
+    ensure  => file,
     path    => "/home/${user}/ant_script.sh",
     content => template("dristhi/ant_script.erb"),
     mode    => "755",
     owner   => $user,
-    group   => $user, 
+    group   => $user,
   }
+
   exec { "install_dristhi":
     path    => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
     cwd     => "/home/${user}",
     command => "/bin/sh ./deploy_script.sh",
     user    => "${user}",
     require => File["deploy_script.sh"],
-  } 
+  }
+
   file { "${env_name}":
-    ensure => directory,
-    path   => "/home/${user}/drishti-delivery/properties/${env_name}",
+    ensure  => directory,
+    path    => "/home/${user}/drishti-delivery/properties/${env_name}",
     require => Exec["install_dristhi"],
   }
 
