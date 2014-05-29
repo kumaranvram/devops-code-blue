@@ -52,4 +52,4 @@ reduce_limit = <%= scope.lookupvar('couchdb::params::reduce_limit') %>
 ; mykey = /path/to/mycommand
 
 [admins]
-<%= scope.lookupvar('couchdb::params::admin_name') %> = <%= scope.lookupvar('couchdb::params::admin_password') %>
+;<%= scope.lookupvar('couchdb::params::admin_name') %> = <%= scope.lookupvar('couchdb::params::admin_password') %>
