@@ -51,15 +51,6 @@ class dristhi($user) {
   
   class { 'postgresql::server': }
 
-  postgresql::server::db { 'drishti':
-    user     => 'postgres',
-    password => postgresql_password('postgres', 'password'),
-  }
-  postgresql::server::database_grant { 'drishti':
-      privilege => 'ALL',
-      db        => 'drishti',
-      role      => 'postgres',
-  }
   class { 'couchdb':  }
   
   class {'dristhi::deployment': 
