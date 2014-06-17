@@ -14,6 +14,14 @@ After the box is downloaded, you can start the box with the command
 ````
 vagrant up
 ````
+Once the box is up, the box can be provisioned to run Dristhi by running the command
+```
+vagrant provision
+```
+or
+```
+vagrant reload
+```
 
 or ssh to the box using 
 ````
